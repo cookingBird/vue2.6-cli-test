@@ -2,7 +2,7 @@
 	<div class="RightItem">
 		<button @click="isShow = !isShow">show</button>
 		<div v-if='isShow'>
-			<h2>This is RightItem</h2>
+			<div>This is RightItem</div>
 		</div>
 	</div>
 </template>
@@ -59,23 +59,23 @@ template: '',
 render: (h) => h(),
 }
 </script>
-<style lang='scss' scoped>
+<style lang='less' scoped>
 /*引入公共css类*/
 /*@import url()*/
 .RightItem {
-	display: block;
-	width: 100%;
-	height: 100%;
+	box-sizing: content-box;
+	width: 700px;
+	height: 300px;
 	border: 3px solid red;
+	
 	button {
 		margin: 5px 7px;
 		background: burlywood;
 	}
 	div {
 		display: block;
-		border: 3px solid black;
-		width: 100%;
-		height: 100%;
+		box-sizing: content-box;
+		background:rgb(243, 153, 50);
 		margin: 10px 10px;
 	}
 }

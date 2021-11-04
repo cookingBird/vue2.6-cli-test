@@ -8,7 +8,8 @@
   </div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
+  @import "assets/css/base.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,10 +1,11 @@
 <template>
-  <div class="SplitLayout">
-    <div class="left" v-if="left">
-      <slot name="left"></slot>
+  <div>
+    <div class="default">
+      <slot></slot>
     </div>
-    <div class="right" v-if="right">
-      <slot name="right"></slot>
+    <div class="SplitLayout">
+      <slot name="left" ></slot>
+      <slot name="right" ></slot>
     </div>
   </div>
 </template>
@@ -24,18 +25,6 @@ export default {
     },
   },
   watch: {
-    show(val) {
-      if (val === "left") {
-        this.left = true;
-      }
-      if (val === "right") {
-        this.right = true;
-      }
-      if (val === "split") {
-        this.right = true;
-        this.left = true;
-      }
-    },
   },
   /**本地状态*/
   data() {
@@ -62,14 +51,19 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .SplitLayout {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   position: relative;
-  widows: 100%;
+  width: 100%;
   height: 100%;
+  .default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .left {
     flex: 1;
     display: flex;
