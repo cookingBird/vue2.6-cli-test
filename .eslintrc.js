@@ -4,6 +4,7 @@ module.exports = {
     node: true,
   },
   extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
+  // extends: ["plugin:vue/strongly-recommended", "eslint:recommended", "@vue/prettier"],//强制要求组件属性的类型、默认值
   parserOptions: {
     parser: "babel-eslint",
   },

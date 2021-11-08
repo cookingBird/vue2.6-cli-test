@@ -2,14 +2,16 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/registry">Registry</router-link> |
+      <router-link to="/split">Registry</router-link>
     </div>
     <router-view />
   </div>
 </template>
 
 <style lang="less" scoped>
-  @import "assets/css/base.css";
+@import "assets/css/base.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
