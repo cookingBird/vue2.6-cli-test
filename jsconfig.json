@@ -1,10 +1,11 @@
-{
+{//该文件用于在，vue中配置了alias时，自动补全
   "compilerOptions": {
     "experimentalDecorators": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "~/*": ["./*"]
     }
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", ".vscode", "public", ".git"]
 }
