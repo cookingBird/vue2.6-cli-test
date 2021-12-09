@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "Cpn1",
+  name: 'Cpn1',
   //声明一个组可用于组件实例的指令
   directives: {},
   /**模板依赖*/
@@ -29,7 +29,7 @@ export default {
   /**本地状态*/
   data() {
     return {
-      msg: "This is Cpn1",
+      msg: 'This is Cpn1',
     };
   },
   computed: {},
@@ -77,7 +77,7 @@ export default {
   /**非响应式的 property(不依赖响应性系统的实例 property)*/
   methods: {},
   /**渲染 (组件输出的声明式描述)*/
-  template: "",
+  template: '',
   render: (h) => h(),
 };
 </script>

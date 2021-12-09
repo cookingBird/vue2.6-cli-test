@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Cpn1 from "./Cpn1";
+import Cpn1 from './Cpn1'
 export default {
-  name: "Destroyed",
+  name: 'Destroyed',
   // 声明一个组可用于组件实例的指令
   directives: {},
   /** 模板依赖*/
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       isShow: false,
-    };
+    }
   },
   computed: {},
   /** 事件 (通过响应式事件触发的回调)*/
@@ -57,11 +57,11 @@ export default {
   /** 非响应式的 property(不依赖响应性系统的实例 property)*/
   methods: {},
   /** 渲染 (组件输出的声明式描述)*/
-  template: "",
+  template: '',
   render: (h) => h(),
-};
+}
 </script>
-<style lang="css" scoped>
+<style lang="css">
 /*引入公共css类*/
 /*@import url()*/
 #Destroyed {

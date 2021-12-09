@@ -6,8 +6,8 @@
     <button @click="isShowRight = !isShowRight">isShowRight</button>
     <split-layout v-if="isShow">
       <h3>This is layout</h3>
-      <left-item slot="left" v-if="isShowLeft" class="left"></left-item>
-      <right-item slot="right" v-if="isShowRight" class="right"></right-item>
+      <left-item class="left" slot="left" v-if="isShowLeft"></left-item>
+      <right-item class="right" slot="right" v-if="isShowRight"></right-item>
     </split-layout>
   </div>
 </template>

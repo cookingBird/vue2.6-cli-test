@@ -1,0 +1,48 @@
+* {
+  font-size: 12px;
+}
+a.red {
+  color: #ff3333;
+  text-decoration: underline;
+}
+a.red:hover {
+  color: #ff9999;
+  text-decoration: none;
+}
+a.yellow {
+  color: #ebd852;
+  text-decoration: underline;
+}
+a.yellow:hover {
+  color: #eae366;
+  text-decoration: none;
+}
+a.blue {
+  color: #0066cc;
+  text-decoration: underline;
+}
+a.blue:hover {
+  color: #00ccff;
+  text-decoration: none;
+}
+a.green {
+  color: #009933;
+  text-decoration: underline;
+}
+a.green:hover {
+  color: #33ffcc;
+  text-decoration: none;
+}
+#title {
+  width: 500px;
+  height: 30px;
+  line-height: 30px;
+}
+#warptest {
+  width: 480px;
+  height: 100px;
+  background: #f7f7f7;
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+  color: #666;
+}
