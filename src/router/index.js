@@ -64,6 +64,26 @@ const routes = [
         '^/test/TailWindSelect'
       ),
   },
+  {
+    path: '/registry',
+    name: '测试在方法中注册组件实例的属性',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      // @ts-ignore
+      import(/* webpackChunkName: "registry" */ '../views/Registry.vue'),
+  },
+  {
+    path: '/split',
+    name: '测试自动分屏',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      // @ts-ignore
+      import(/* webpackChunkName: "split" */ '../views/Split.vue'),
+  },
 ];
 
 const router = new VueRouter({
