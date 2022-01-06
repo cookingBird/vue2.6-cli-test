@@ -1,9 +1,15 @@
 <template>
   <div id="Cpn1">
-    <span>{{ msg }}</span>
+    <span>this is Cpn1</span>
     <div>
       <h2>This is props</h2>
       <span>{{ test }}</span>
+      <p>this is inject</p>
+      <p>{{ parent.count }}</p>
+      <p>parentCount is {{ parentCount }}</p>
+      <p>this is store count</p>
+      <p>store.state.storeCount is {{ $store.state.storeCount }}</p>
+      <p>this is computed storeCount {{ storeCount }}</p>
     </div>
   </div>
 </template>
@@ -19,7 +25,7 @@ export default {
   extends: {},
   mixins: {},
   provide: {},
-  inject: {},
+  inject: ['parent'],
   /**属性接口*/
   props: {
     test: String,
@@ -32,7 +38,14 @@ export default {
       msg: 'This is Cpn1',
     };
   },
-  computed: {},
+  computed: {
+    parentCount() {
+      return this.parent.count;
+    },
+    storeCount() {
+      return this.$store.state.storeCount;
+    },
+  },
   /**事件 (通过响应式事件触发的回调)*/
   watch: {},
   /**LifeCyle Hooks*/

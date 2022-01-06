@@ -8,7 +8,7 @@ vue
 
 <script>
 export default {
-  name: "ComponentB",
+  name: 'ComponentB',
   //声明一个组可用于组件实例的指令
   directives: {},
   /**模板依赖*/
@@ -25,7 +25,7 @@ export default {
   /**本地状态*/
   data() {
     return {
-      say: "this is componentsB",
+      say: 'this is componentsB',
     };
   },
   computed: {},
@@ -36,7 +36,7 @@ export default {
   beforeCreate() {},
   //生命周期 - 创建完成（可以访问当前this实例）
   async created() {
-    this.setStack("__CREATED__READY");
+    this.setStack('__CREATED__READY');
   },
   //生命周期 - 挂载之前
   beforeMount() {},
@@ -47,7 +47,7 @@ export default {
         resolve();
       }, 3000);
     });
-    this.setReady("__CREATED__READY");
+    this.setReady('__CREATED__READY');
   },
   //生命周期 - 更新之前
   beforeUpdate() {},
@@ -62,7 +62,7 @@ export default {
   /**非响应式的 property(不依赖响应性系统的实例 property)*/
   methods: {
     createdReady() {
-      return this.requestStack("__CREATED__READY");
+      return this.requestStack('__CREATED__READY');
     },
     setStack(stackName) {
       this[stackName] = false;
@@ -73,6 +73,9 @@ export default {
       return new Promise((resolve) => {
         if (this[`__READY__${stackName}`]) {
           return resolve();
+        }
+        if (!this[`__STACK__${stackName}`]) {
+          this[`__STACK__${stackName}`] = new Array();
         }
         this[`__STACK__${stackName}`].push(resolve);
       });
@@ -90,7 +93,7 @@ export default {
     },
   },
   /**渲染 (组件输出的声明式描述)*/
-  template: "",
+  template: '',
   render: (h) => h(),
 };
 </script>
