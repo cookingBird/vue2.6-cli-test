@@ -36,14 +36,14 @@ export default {
   data() {
     return {
       msg: 'This is Cpn1',
-    };
+    }
   },
   computed: {
     parentCount() {
-      return this.parent.count;
+      return this.parent.count
     },
     storeCount() {
-      return this.$store.state.storeCount;
+      return this.$store.state.storeCount
     },
   },
   /**事件 (通过响应式事件触发的回调)*/
@@ -51,17 +51,17 @@ export default {
   /**LifeCyle Hooks*/
   //生命周期 - 创建之前
   beforeCreate() {
-    console.log(`This is beforeCreated`);
-    console.log(this);
-    console.log(this.msg);
-    console.log(this.test);
+    console.log(`This is beforeCreated`)
+    console.log(this)
+    console.log(this.msg)
+    // console.log(this.test);
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    console.log(`This is created`);
-    console.log(this);
-    console.log(this.msg);
-    console.log(this.test);
+    console.log(`This is created`)
+    console.log(this)
+    console.log(this.msg)
+    console.log(this.test)
   },
   //生命周期 - 挂载之前
   beforeMount() {},
@@ -73,17 +73,17 @@ export default {
   updated() {},
   //生命周期 - 销毁之前
   beforeDestroy() {
-    console.log(`This is beforeDestroy`);
-    console.log(this);
-    console.log(this.msg);
-    console.log(this.test);
+    console.log(`This is beforeDestroy`)
+    console.log(this)
+    console.log(this.msg)
+    console.log(this.test)
   },
   //生命周期 - 销毁完成
   destroyed() {
-    console.log(`This is destroyed`);
-    console.log(this);
-    console.log(this.msg);
-    console.log(this.test);
+    console.log(`This is destroyed`)
+    console.log(this)
+    console.log(this.msg)
+    console.log(this.test)
   },
   //如果页面有keep-alive缓存功能，这个钩子会触发
   activated() {},
@@ -92,7 +92,7 @@ export default {
   /**渲染 (组件输出的声明式描述)*/
   template: '',
   render: (h) => h(),
-};
+}
 </script>
 <style lang="css" scoped>
 /*引入公共css类*/

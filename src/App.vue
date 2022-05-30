@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <div id="nav">
+  <div id="app" class="test light:bg-transparent light:transition-shadow">
+    <div id="nav" class="light:text-sm deep:text-lg">
       <router-link to="/">Home</router-link>
       |
       <router-link to="/about">Split</router-link>
@@ -12,6 +12,10 @@
       <router-link to="/style-change">StyleChange</router-link>
       |
       <router-link to="/tailwind-select">TailwindSelect</router-link>
+      |
+      <router-link to="/utilities-test">UtilitiesTest</router-link>
+      |
+      <router-link to="/passResponse">passResponse</router-link>
     </div>
     <router-view />
   </div>
@@ -24,7 +28,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 #nav {

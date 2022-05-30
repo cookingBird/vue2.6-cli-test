@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import SplitLayout from '/test/AutoSplitLayout/SplitLayout.vue';
-import LeftItem from '/test/AutoSplitLayout/LeftItem.vue';
-import RightItem from '/test/AutoSplitLayout/RightItem.vue';
+import SplitLayout from '/test/AutoSplitLayout/SplitLayout.vue'
+import LeftItem from '/test/AutoSplitLayout/LeftItem.vue'
+import RightItem from '/test/AutoSplitLayout/RightItem.vue'
 export default {
   name: 'About',
   components: { SplitLayout, LeftItem, RightItem },
@@ -24,9 +24,15 @@ export default {
       isShow: false,
       isShowLeft: false,
       isShowRight: false,
-    };
+    }
   },
-};
+  watch: {
+    $route(val) {
+      console.log(val)
+      console.log(this.$router)
+    },
+  },
+}
 </script>
 <style lang="less" scoped>
 .about {

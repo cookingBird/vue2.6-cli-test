@@ -14,10 +14,22 @@
 export default {
   name: 'AutoScroll',
   data() {
-    return {};
+    return {}
+  },
+  watch: {
+    // $route(val) {
+    //   console.log(val)
+    //   console.log(this.$router)
+    // },
+    $route: {
+      handler(val) {
+        console.log(val)
+        console.log(this.$router)
+      },
+    },
   },
 
   methods: {},
   mounted() {},
-};
+}
 </script>

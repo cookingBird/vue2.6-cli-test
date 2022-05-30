@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Cpn1 from './Cpn1';
-import { destroyHook } from './store';
+import Cpn1 from './Cpn1'
+import { destroyHook } from './store'
 export default {
   name: 'Destroyed',
   // 声明一个组可用于组件实例的指令
@@ -31,7 +31,7 @@ export default {
   provide() {
     return {
       parent: this,
-    };
+    }
   },
   inject: {},
   /** 属性接口*/
@@ -43,20 +43,24 @@ export default {
     return {
       isShow: false,
       count: 0,
-    };
+    }
   },
   computed: {
     storeCount() {
-      return destroyHook.state.currentCount;
+      return destroyHook.state.currentCount
     },
     storeCountByStore() {
-      return this.$store.state.DestroyedHook.currentCount;
+      return this.$store.state.DestroyedHook.currentCount
     },
   },
   /** 事件 (通过响应式事件触发的回调)*/
   watch: {
     count() {
-      console.log(this);
+      console.log(this)
+    },
+    $route(val) {
+      console.log(val)
+      console.log(this.$router)
     },
   },
   /** LifeCycle Hooks*/
@@ -81,13 +85,13 @@ export default {
   /** 非响应式的 property(不依赖响应性系统的实例 property)*/
   methods: {
     DestroyStoreCountAdd() {
-      destroyHook.state.currentCount++;
+      destroyHook.state.currentCount++
     },
   },
   /** 渲染 (组件输出的声明式描述)*/
   template: '',
   render: (h) => h(),
-};
+}
 </script>
 <style lang="css">
 /*引入公共css类*/

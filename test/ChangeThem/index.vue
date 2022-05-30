@@ -31,7 +31,12 @@ export default {
   data() {
     return {}
   },
-
+  watch: {
+    $route(val) {
+      console.log(val)
+      console.log(this.$router)
+    },
+  },
   methods: {
     styleChange(n) {
       document.getElementById('cssLink').href = `/css/style${n}.css`
