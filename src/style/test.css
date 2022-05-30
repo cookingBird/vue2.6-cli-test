@@ -1,0 +1,19 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+  .test {
+    @apply disabled:bg-transparent first-child:bg-transparent disabled:text-white first-child:text-gray-700 light:text-gray-700;
+    @apply light:bg-transparent;
+    @apply text-red-600;
+  }
+}
+
+@variants light {
+  .test-light {
+    @apply text-yellow-100 bg-gray-300 w-10 h-96;
+  }
+}
