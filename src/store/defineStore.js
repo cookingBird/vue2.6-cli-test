@@ -1,4 +1,5 @@
 import Store from './index';
+import { mapState,mapGetters,mapMutations,mapActions } from 'vuex';
 
 export function defineStore (name,options) {
 	options = {
@@ -52,6 +53,10 @@ export function defineStore (name,options) {
 			$unmount: () => {
 				Store.unregisterModule(name)
 			},
+			mapState: (option) => (mapState(name,option)),
+			mapGetters: (option) => (mapGetters(name,option)),
+			mapMutations: (option) => (mapMutations(name,option)),
+			mapActions: (option) => (mapActions(name,option)),
 		};
 	}
 }

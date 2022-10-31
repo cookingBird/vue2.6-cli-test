@@ -1,14 +1,23 @@
 <template>
 	<div class="index">
 		<div>
-			<button @click="Store.$commit.increment">+</button>
-			<div>foo:<span>{{foo}}</span></div>
+			<div>
+				<button @click="Store.$commit.increment">Store $commit btn:+</button>
+			</div>
+			<div>
+				<button @click="increment">Store mapped btn:+</button>
+			</div>
+			<div>foo:<span>{{fooGetter}}</span></div>
 			<div>foo:<span>{{getfoo}}</span></div>
 		</div>
 		<div>
-			<button @click="Store.$commit.random">+</button>
-			<div>foo:<span>{{bar}}</span></div>
+			<button @click="Store.$commit.random">Store $commit random:+</button>
 		</div>
+		<div>
+			<button @click="random">Store mapped random:+</button>
+		</div>
+		<div>bar:<span>{{bar}}</span></div>
+		<div>bar.name:<span>{{bar}}</span></div>
 	</div>
 </template>
 
@@ -28,9 +37,10 @@ export default {
 		};
 	},
 	computed: {
-		foo () {
-			return Store.state.foo
-		},
+		...Store.mapGetters(['fooGetter','bar',]),
+		// foo () {
+		// 	return Store.state.foo
+		// },
 		getfoo () {
 			return Store.getters.fooGetter()
 		},
@@ -53,9 +63,8 @@ export default {
 		useStore(this)
 	},
 	mounted () { },
-	methods: {},
+	methods: {
+		...Store.mapMutations(['increment','random'])
+	},
 }
 </script>
-<style lang='css' scoped>
-.index {}
-</style>
