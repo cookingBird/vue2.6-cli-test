@@ -1,6 +1,12 @@
 <template>
-  <div id="app" class="test light:bg-transparent light:transition-shadow">
-    <div id="nav" class="light:text-sm deep:text-lg">
+  <div
+    id="app"
+    class="test light:bg-transparent light:transition-shadow"
+  >
+    <div
+      id="nav"
+      class="light:text-sm deep:text-lg"
+    >
       <router-link to="/">Home</router-link>
       |
       <router-link to="/about">Split</router-link>
@@ -16,6 +22,10 @@
       <router-link to="/utilities-test">UtilitiesTest</router-link>
       |
       <router-link to="/passResponse">passResponse</router-link>
+      |
+      <router-link to="/pinia">pinia</router-link>
+      |
+      <router-link to="/defineStore">defineStore</router-link>
     </div>
     <router-view />
   </div>
@@ -23,6 +33,7 @@
 
 <style lang="less" scoped>
 @import 'assets/css/base.css';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
