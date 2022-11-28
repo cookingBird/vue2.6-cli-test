@@ -26,6 +26,8 @@
       <router-link to="/pinia">pinia</router-link>
       |
       <router-link to="/defineStore">defineStore</router-link>
+      |
+      <router-link to="/umdImport">umdImport</router-link>
     </div>
     <router-view />
   </div>
