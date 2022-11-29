@@ -8,7 +8,8 @@
 </template>
 
 <script>
-const G2Plot = require('/Deps/g2plot/g2plot.min.js')
+// const G2Plot = require('/Deps/g2plot/g2plot.min.js')
+require('/Deps/g2plot/g2plot.min.js');
 export default {
 	name: "index",
 	components: {},
@@ -24,7 +25,7 @@ export default {
 	watch: {},
 	created () { },
 	mounted () {
-		console.log('G2Plot',G2Plot)
+		console.log('G2Plot',window.G2Plot)
 	},
 	methods: {},
 }
