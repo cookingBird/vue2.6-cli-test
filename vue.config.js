@@ -20,6 +20,10 @@ module.exports = {
         }
         callback();
       },
+      /^vue/i, //remove vue vuex vue-router
+      {
+        vue: 'Vue', //only remove vue
+      },
     ],
   },
 };
