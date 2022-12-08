@@ -28,6 +28,12 @@
       <router-link to="/defineStore">defineStore</router-link>
       |
       <router-link to="/umdImport">umdImport</router-link>
+      |
+      <router-link to="/canvas">canvas</router-link>
+      |
+      <router-link to="/idleCallback">idle</router-link>
+      |
+      <router-link to="/idleCallback2">idle2</router-link>
     </div>
     <router-view />
   </div>
@@ -51,7 +57,7 @@
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: rgba(255, 0, 0, 0.5);
     }
   }
 }

@@ -1,34 +1,36 @@
 <template>
   <div class="w-full h-full flex flex-row">
-  <span class="text-red-500 text-9xl">
-    this is outer router view
-    <div>
-    <router-view></router-view>
-    </div>
-  </span>
+    <span class="text-red-500 text-9xl">
+      this is outer router view
+      <div>
+        <router-view></router-view>
+      </div>
+    </span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'passResponse',
-  components: {  },
-  data() {
+  components: {},
+  data () {
     return {
       passResponse: 0,
     }
   },
-  provide() {
+  provide () {
     return {
       provideTest: this.pd_passResponse('passResponse'),
     }
   },
   watch: {
-    passResponse(val) {},
+    passResponse () { },
   },
   methods: {},
-  mounted() {},
+  mounted () { },
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>
