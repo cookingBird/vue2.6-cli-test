@@ -1,14 +1,10 @@
 <template>
-	<div class="index h-44  flex justify-center">
-		<div class="border border-blue-500">
-			<canvas
-				ref="canvas"
-				class="border border-gray-600"
-				width="160"
-				height="160"
-			></canvas>
-		</div>
-	</div>
+	<canvas
+		class="mx-auto"
+		ref="canvas"
+		width="160"
+		height="160"
+	></canvas>
 </template>
 
 <script>
@@ -27,45 +23,112 @@ export default {
 	computed: {
 		context () {
 			return () => this.$refs.canvas.getContext('2d')
+		},
+		bounding () {
+			return () => this.$refs.canvas.getBoundingClientRect();
 		}
 	},
 	watch: {},
-	created () { },
+
 	mounted () {
-		this.drawPath();
+		const context = this.context();
+		this.centerCtx = Utils.Context.sandboxCtx(context,(context) => {
+			context.translate((context.canvas.width) / 2,(context.canvas.height) / 2)
+		});
+		this.normalCartesian = Utils.Context.sandboxCtx(
+			context,
+			(context) => {
+				context.translate(0,context.canvas.height);
+				context.scale(1,-1);
+			}
+		);
+		this.wrapperCtx = Utils.Context.getContextDrawer(context,(context) => {
+			context.translate(10,10)
+		});
+		this.LineDrawer = Utils.Drawer.getLineDrawer(context);
+		this.drawCircle = () => {
+			this.normalCartesian((context) => {
+				const w = context.canvas.width;
+				const h = context.canvas.height;
+				context.clearRect(0,0,w,h)
+				this.centerCtx((context) => {
+					context.strokeStyle = '#00ff00';
+					context.beginPath();
+					context.arc(0,0,1,0,Math.PI * 2,true); // 绘制
+					context.stroke();
+					context.beginPath();
+					context.arc(0,0,context.canvas.width / 2,0,Math.PI * 2,true); // 绘制
+					context.stroke();
+				})
+			})
+		}
+		this.drawCircle();
+		this.eventsPlugin(this.$refs.canvas);
 		// this.requestAnimate();
 	},
 	methods: {
 		drawPath () {
-			const context = this.context();
-			const ctx = context;
-			const RectDrawer = Utils.getRectDrawer(context)
-			const LineDrawer = Utils.getLineDrawer(context)
-			const TranslateCtx = Utils.getTranslateContext(context,80,80);
-			const imageWrapper = Utils.getTranslateContext(context,10,10)
-			const Trans25Ctx = Utils.getTranslateContext(context,25,25);
-			const shapeDrawer = Utils.getShapeDrawer(context,() => {
-				context.fillStyle = "rgba(222,11,11,0.5)"
-			})
-			context.translate(0,160); context.scale(1,-1);
-			imageWrapper(() => {
-				LineDrawer(160,160);
-				TranslateCtx(() => {
-					context.strokeStyle = '#00ff00';
+			let context = this.context();
+			const RectDrawer = Utils.Drawer.getRectDrawer(context);
+			const shapeFillDrawer = Utils.Drawer.getShapeDrawer(context,void 0,
+				(context) => {
+				},'fill');
+			this.drawCircle();
+		},
+		drawArc (index) {
+			this.normalCartesian(() => {
+				this.centerCtx((context) => {
+					const radius = (context.canvas.width) / 2;
+					const arcMap = {
+						0: [(Math.PI * (1 / 4)),(3 / 4) * Math.PI],
+						1: [(3 / 4) * Math.PI,(1 / 4 + 1) * Math.PI],
+						2: [(1 / 4 + 1) * Math.PI,(3 / 4 + 1) * (Math.PI)],
+						3: [(3 / 4 + 1) * (Math.PI),(1 / 4) * (Math.PI)],
+					};
+					const lineMap = {
+						0: [
+							Math.cos((Math.PI * (1 / 4))) * radius,Math.sin((Math.PI * (1 / 4))) * radius,
+							0,0,
+							Math.cos((3 / 4) * Math.PI) * radius,Math.sin((3 / 4) * Math.PI) * radius
+						],
+						1: [
+							Math.cos((3 / 4) * Math.PI) * radius,Math.sin((3 / 4) * Math.PI) * radius,
+							0,0,
+							Math.cos((1 / 4 + 1) * Math.PI) * radius,Math.sin((1 / 4 + 1) * Math.PI) * radius
+						],
+						2: [
+							Math.cos((1 / 4 + 1) * Math.PI) * radius,Math.sin((1 / 4 + 1) * Math.PI) * radius,
+							0,0,
+							Math.cos((3 / 4 + 1) * (Math.PI)) * radius,Math.sin((3 / 4 + 1) * (Math.PI)) * radius
+						],
+						3: [
+							Math.cos((3 / 4 + 1) * (Math.PI)) * radius,Math.sin((3 / 4 + 1) * (Math.PI)) * radius,
+							0,0,
+							Math.cos((Math.PI * (1 / 4))) * radius,Math.sin((Math.PI * (1 / 4))) * radius,
+						],
+					}
+					const arc = arcMap[index];
+					const line = lineMap[index];
+					this.LineDrawer(...line)
+					context.strokeStyle = '#f00';
 					context.beginPath();
-					context.moveTo(0,0);
-					context.lineTo(300,75);
+					context.arc(0,0,radius,arc[0],arc[1]); // 绘制
 					context.stroke();
-				});
-				RectDrawer(0,0,160,160)
-				Trans25Ctx(() => {
-					// 填充三角形
-					shapeDrawer(105,25,25,105)
 				})
 			})
-			context.fillStyle = "#000000"
-			ctx.font = "12px serif";
-			ctx.fillText("Hello world",0,10);
+		},
+		calcVectorAngle (vector1,vector2) {
+			const vectorAngleArc = (vector1,vector2) => {
+				const mV1 = Math.sqrt(vector1.reduce((acc,cur) => acc + Math.pow(cur,2),0));
+				const mV2 = Math.sqrt(vector2.reduce((acc,cur) => acc + Math.pow(cur,2),0));
+				return Math.acos(
+					vector1.reduce((acc,n,i) => acc + n * vector2[i],0) / (mV1 * mV2)
+				);
+			};
+			const vectorAngle = (vector1,vector2) => {
+				return (vectorAngleArc(vector1,vector2) / Math.PI) * 180;
+			};
+			return vectorAngle(vector1,vector2)
 		},
 		requestAnimate () {
 			const element = this.$refs.canvas;
@@ -97,9 +160,32 @@ export default {
 
 			window.requestAnimationFrame(step);
 		},
+		eventsPlugin (e,callback) {
+			e.addEventListener('click',(e) => {
+				const calcRelativeX = (val) => val - (this.context().canvas.width / 2);
+				const calcRelativeY = (val) => {
+					return (this.context().canvas.height - val) - (this.context().canvas.height / 2)
+				};
+				const axis = [[0,1],[-1,0],[0,-1],[1,0]];
+				const coordinate = axis.map(
+					(vector1) => this.calcVectorAngle(vector1,[calcRelativeX(e.offsetX),calcRelativeY(e.offsetY)])
+				)
+				const result = coordinate.reduce((pre,cur,index) => {
+					if (pre.coord > cur) {
+						return {
+							coord: cur,
+							index
+						}
+					} else {
+						return pre;
+					}
+				},{ coord: 180,index: 0 });
+				this.drawCircle();
+				this.drawArc(result.index);
+				callback && callback(result)
+			})
+		}
+
 	},
 }
 </script>
-<style lang='css' scoped>
-.index {}
-</style>
