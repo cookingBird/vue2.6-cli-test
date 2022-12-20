@@ -18,25 +18,25 @@
 				/>
 				<div class="flex flex-grow-0">
 					<div
-						v-for="item in topArr.length"
+						v-for="item in Math.pow(2,nodes.length)"
 						class="flex-grow flex-shrink-0 border-b border-r w-[44px] h-[37px] leading-3"
 						:key="item"
 					>
 						<el-input
 							class="flex items-center w-8 h-full"
-							v-model="topArr[item-1]"
+							v-model="allArr[2*(item-1)]"
 						></el-input>
 					</div>
 				</div>
 				<div class="flex flex-grow-0">
 					<div
 						class="flex-grow flex-shrink-0 border-b border-r w-[44px] h-[37px]"
-						v-for="item in bottomArr.length"
+						v-for="item in Math.pow(2,nodes.length)"
 						:key="item"
 					>
 						<el-input
 							class="w-8 flex items-center h-full"
-							v-model="bottomArr[item-1]"
+							v-model="allArr[2*(item-1)+1]"
 						></el-input>
 					</div>
 				</div>
@@ -65,20 +65,18 @@ export default {
 		labelKey: {
 			type: String,
 			default: 'name'
-		}
+		},
+		weight: Array
 	},
 	data () {
 		return {
 			treeData: {},
-			topArr: [],
-			bottomArr: [],
+			allArr: []
 		};
 	},
-
 	mounted () {
 		this.treeData = this.getTree(JSON.parse(JSON.stringify(this.nodes)));
-		this.topArr = new Array(Math.pow(2,this.nodes.length)).fill(0.5)
-		this.bottomArr = new Array(Math.pow(2,this.nodes.length)).fill(0.5);
+		this.allArr = this.weight?.length ? this.weight : new Array(Math.pow(2,this.nodes.length + 1)).fill(0.5);
 	},
 
 	methods: {
@@ -96,9 +94,7 @@ export default {
 			},parent)
 		},
 		getValue () {
-			return this.topArr.reduce((pre,cur,index) => {
-				return [...pre,cur,this.bottomArr[index]]
-			},[])
+			return this.allArr
 		},
 	},
 }
