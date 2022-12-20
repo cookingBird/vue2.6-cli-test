@@ -3,6 +3,7 @@
 node_modules
 dist
 target
+*.zip
 
 # local env files
 .env.local

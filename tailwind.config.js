@@ -31,5 +31,12 @@ module.exports = {
         });
       });
     }),
+    plugin(function ({ addVariant, e }) {
+      addVariant('small', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `div[size=small].small${e(`${separator}${className}`)}`;
+        });
+      });
+    }),
   ],
 };

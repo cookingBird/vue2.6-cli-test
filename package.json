@@ -8,10 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@antv/data-set": "^0.11.8",
     "@antv/g2": "^4.2.8",
     "@antv/g2plot": "^2.4.22",
     "@vue/composition-api": "^1.7.1",
     "core-js": "^3.6.5",
+    "echarts": "^5.4.1",
     "element-ui": "^2.15.12",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",

@@ -34,6 +34,16 @@
       <router-link to="/idleCallback">idle</router-link>
       |
       <router-link to="/idleCallback2">idle2</router-link>
+      |
+      <router-link to="/fragment">fragment</router-link>
+      |
+      <router-link to="/g2Polar">G2Polar</router-link>
+      |
+      <router-link to="/tailwindWeight">TailwindWeight</router-link>
+      |
+      <router-link to="/appendChild">appendChild</router-link>
+      |
+      <router-link to="/recurseComp">recurseComp</router-link>
     </div>
     <router-view />
   </div>
