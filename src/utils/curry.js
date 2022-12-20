@@ -1,15 +1,19 @@
-import useValue from './useValue';
-export default function (fn) {
-  const fnLength = fn.length; //函数的最小参数长度;
-  const [getParams, setParams] = useValue([], function (params, val) {
-    params.splice(params.length, 0, val);
-  });
-  return function rest(param) {
-    if (getParams().length === fnLength) {
-      fn(...getParams());
+function curry(fn, ...params) {
+  return function (...restParams) {
+    let allParams = [...params, ...restParams];
+    if (allParams.length === fn.length) {
+      return fn(...allParams);
     } else {
-      setParams(param);
-      return rest;
+      return curry(fn, ...allParams);
     }
   };
 }
+
+function add(x, y, z) {
+  return x + y + z;
+}
+
+const rest1 = curry(add, 1, 2);
+const restAll = curry(add);
+console.log(rest1(3));
+console.log(restAll(3, 2, 1));
