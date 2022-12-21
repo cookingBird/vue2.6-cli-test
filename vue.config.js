@@ -1,3 +1,4 @@
+// vue.config.js
 const path = require('path');
 const isProd = process.env.NODE_ENV === 'production';
 const cdnPath = '/';
@@ -11,6 +12,7 @@ module.exports = {
   lintOnSave: true,
   configureWebpack: {
     resolve: {
+      extensions: ['.js', '.vue', '.css', 'jsx'],
       alias: {
         '^': path.resolve(__dirname, './'),
       },
