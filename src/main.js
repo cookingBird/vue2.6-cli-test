@@ -7,7 +7,7 @@ import App from './App.vue';
 import './style/index.css';
 
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk';
+import 'element-ui/lib/theme-chalk/index.css';
 
 import passResponse from './plugins/passResponse';
 Vue.use(passResponse);
@@ -20,8 +20,8 @@ Vue.config.productionTip = false;
 
 Vue.use(ElementUI, { size: 'mini' });
 new Vue({
-	router,
-	pinia,
-	store,
-	render: (h) => h(App),
+  router,
+  pinia,
+  store,
+  render: (h) => h(App),
 }).$mount('#app');
