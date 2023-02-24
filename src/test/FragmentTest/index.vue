@@ -33,6 +33,7 @@
 
 <script>
 import MyFragment,{ Test,TestDefaultSlot,TestScopeDefaultSlot,Default2 } from './MyFragment';
+/* eslint-disable */
 import wrapper from "./wrapper.vue"
 
 export default {

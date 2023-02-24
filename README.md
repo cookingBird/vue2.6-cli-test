@@ -116,4 +116,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
             "allow-leading-underscore",
             "allow-trailing-underscore",
             "ban-keywords"]
-
+}

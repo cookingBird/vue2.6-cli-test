@@ -1,15 +1,12 @@
 // vue.config.js
 const path = require('path');
 const isProd = process.env.NODE_ENV === 'production';
-const cdnPath = '/';
-const CDN = isProd
-  ? {
-      js: [cdnPath + 'cdn/vue/vue.js'],
-      css: [cdnPath + 'cdn/css/style.css'],
-    }
-  : { js: [], css: [] };
+const CDN = {
+  js: ['cdn/vue/vue.min.js', 'cdn/g2plot/g2plot.min.js', 'cdn/lodash/lodash.min.js'],
+  css: ['cdn/css/style.css'],
+};
 module.exports = {
-  lintOnSave: true,
+  lintOnSave: false,
   configureWebpack: {
     resolve: {
       extensions: ['.js', '.vue', '.css', 'jsx'],

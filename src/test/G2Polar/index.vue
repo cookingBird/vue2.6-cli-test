@@ -21,7 +21,7 @@ export default {
 	watch: {},
 	created () { },
 	mounted () {
-		this.init2();
+		this.init3();
 	},
 	methods: {
 		init (id = "polar-graph") {
@@ -160,6 +160,24 @@ export default {
 			chart.render();
 
 		},
+		init3 (id = "polar-graph") {
+			const data = [
+				{ year: '1951 年',sales: 38 },
+				{ year: '1952 年',sales: 52 },
+				{ year: '1956 年',sales: 61 },
+				{ year: '1957 年',sales: 145 },
+				{ year: '1958 年',sales: 48 },
+			];
+			/* eslint-disable */
+			const bar = new G2Plot.Bar(id,{
+				data,
+				xField: 'sales',
+				yField: 'year',
+				seriesField: 'year',
+			});
+
+			bar.render();
+		}
 	},
 }
 </script>

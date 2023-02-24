@@ -1,5 +1,5 @@
 <template>
-	<div class="index w-full h-full">
+	<div class="w-full h-full index">
 		UmdImport
 		<div
 			id="graph-container"
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-const G2Plot = require('/Deps/g2plot/g2plot.min.js')
+// const G2Plot = require('/Deps/g2plot/g2plot.min.js')
 // require('/Deps/g2plot/g2plot.min.js');
 export default {
 	name: "index",
@@ -26,11 +26,11 @@ export default {
 	watch: {},
 	created () { },
 	mounted () {
+		/* eslint-disable */
 		console.log('G2Plot',G2Plot)
 	},
 	methods: {},
 }
 </script>
 <style lang='css' scoped>
-
 </style>

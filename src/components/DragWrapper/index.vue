@@ -10,13 +10,13 @@
   >
     <div
       class="w-full h-full flex flex-col relative
-        bg-[color:var(--zhts-content-bg)] text-white cursor-default border border-blue-500"
+            bg-[color:var(--zhts-content-bg)] text-white cursor-default border border-blue-500"
       :class="wrapperClass"
       ref="wrapper"
     >
       <div
         type="mask"
-        class=" absolute inset-0 bg-transparent pointer-events-none -m-1"
+        class="absolute inset-0 -m-1 bg-transparent pointer-events-none "
         ref="mask"
       ></div>
       <header
@@ -39,7 +39,7 @@
         </slot>
       </header>
       <div
-        class="flex-grow overflow-y-scroll none-sbar relative"
+        class="relative flex-grow overflow-y-scroll none-sbar"
         :class="contentClass"
         ref="content"
       >
@@ -52,13 +52,11 @@
 <script>
 
 import useDocumentClick from '@/mixin/useDocumentClick';
-import ContentBg from '@/components/ContentBg/index.vue';
 import VueDragResize from 'vue-drag-resize';
 
 export default {
   name: "dialog-wrapper",
   components: {
-    ContentBg,
     VueDragResize
   },
   mixins: [useDocumentClick],
@@ -101,5 +99,4 @@ export default {
 }
 </script>
 <style>
-
 </style>
