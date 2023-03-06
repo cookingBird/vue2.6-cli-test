@@ -7,47 +7,49 @@
       id="nav"
       class="light:text-sm deep:text-lg"
     >
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/about">Split</router-link>
-      |
-      <router-link to="/destroyed">Destroyed</router-link>
-      |
-      <router-link to="/auto-scroll">AutoScroll</router-link>
-      |
-      <router-link to="/style-change">StyleChange</router-link>
-      |
-      <router-link to="/tailwind-select">TailwindSelect</router-link>
-      |
-      <router-link to="/utilities-test">UtilitiesTest</router-link>
-      |
-      <router-link to="/passResponse">passResponse</router-link>
-      |
-      <router-link to="/pinia">pinia</router-link>
-      |
-      <router-link to="/defineStore">defineStore</router-link>
-      |
-      <router-link to="/umdImport">umdImport</router-link>
-      |
-      <router-link to="/canvas">canvas</router-link>
-      |
-      <router-link to="/idleCallback">idle</router-link>
-      |
-      <router-link to="/idleCallback2">idle2</router-link>
-      |
-      <router-link to="/fragment">fragment</router-link>
-      |
-      <router-link to="/g2Polar">G2Polar</router-link>
-      |
-      <router-link to="/tailwindWeight">TailwindWeight</router-link>
-      |
-      <router-link to="/appendChild">appendChild</router-link>
-      |
-      <router-link to="/recurseComp">recurseComp</router-link>
+      <router-link
+        v-for="route,index in routes"
+        :to="route.path"
+        :key="index"
+      >
+        {{route.name}} |
+      </router-link>
+
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      routes: [
+        { path: '/',name: 'Home' },
+        { path: '/about',name: 'Split' },
+        { path: '/destroyed',name: 'Destroyed' },
+        { path: '/auto-scroll',name: 'AutoScroll' },
+        { path: '/style-change',name: 'StyleChange' },
+        { path: '/tailwind-select',name: 'TailwindSelect' },
+        { path: '/utilities-test',name: 'UtilitiesTest' },
+        { path: '/passResponse',name: 'passResponse' },
+        { path: '/pinia',name: 'pinia' },
+        { path: '/defineStore',name: 'defineStore' },
+        { path: '/umdImport',name: 'umdImport' },
+        { path: '/canvas',name: 'canvas' },
+        { path: '/idleCallback',name: 'idle' },
+        { path: '/idleCallback2',name: 'idle2' },
+        { path: '/fragment',name: 'fragment' },
+        { path: '/g2Polar',name: 'G2Polar' },
+        { path: '/tailwindWeight',name: 'TailwindWeight' },
+        { path: '/appendChild',name: 'appendChild' },
+        { path: '/recurseComp',name: 'recurseComp' },
+        { path: '/asyncWrapper',name: 'AsyncWrapper' },
+      ]
+    }
+  }
+}
+</script>
 
 <style lang="less" scoped>
 @import 'assets/css/base.css';
