@@ -45,6 +45,7 @@ export default {
         { path: '/appendChild',name: 'appendChild' },
         { path: '/recurseComp',name: 'recurseComp' },
         { path: '/asyncWrapper',name: 'AsyncWrapper' },
+        { path: '/babel',name: 'Babel' },
       ]
     }
   }
