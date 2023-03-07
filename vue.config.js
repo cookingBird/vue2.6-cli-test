@@ -12,6 +12,7 @@ module.exports = {
       extensions: ['.js', '.vue', '.css', 'jsx'],
       alias: {
         '^': path.resolve(__dirname, './'),
+        '@': path.resolve(__dirname, 'src'),
       },
       // fallback: {
       //   g2plot: require.resolve(__dirname, './Deps/g2plot/g2plot.min.js'),
