@@ -106,6 +106,20 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "test" */ '@/test/Babel'),
   },
+  {
+    path: '/virtual-list',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "test" */ '@/test/VirtualList'),
+  },
+  {
+    path: '/table-flex',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "test" */ '@/test/TableFlex'),
+  },
 ];
 
 const router = new VueRouter({
