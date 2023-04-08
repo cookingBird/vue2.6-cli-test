@@ -2,10 +2,11 @@ import store from '@/store'
 import router from '@/router'
 // import { connector } from '@gislife/micro-message'
 import Observe from './observe'
+import Full from './Full'
 
 const Auth = { install }
 
-const Plugins = [Auth, Observe]
+const Plugins = [Auth, Observe, Full]
 function InstallAllPlg (Vue) {
   Plugins.forEach(plg => Vue.use(plg))
 }
@@ -88,14 +89,19 @@ function install (vue, options = {}) {
     }
   })
   vue.directive('height', (el, bind) => {
-    let value = bind.value;
+    let value = bind.value
     let height =
-      value === 0 || value ? `calc(${bind.arg || '100%'} - ${value}px)` : bind.arg;
-    el.style.height = height;
-  });
+      value === 0 || value
+        ? `calc(${bind.arg || '100%'} - ${value}px)`
+        : bind.arg
+    el.style.height = height
+  })
   vue.directive('width', (el, bind) => {
-    let value = bind.value;
-    let width = value === 0 || value ? `calc(${bind.arg || '100%'} - ${value}px)` : bind.arg;
-    el.style.width = width;
-  });
+    let value = bind.value
+    let width =
+      value === 0 || value
+        ? `calc(${bind.arg || '100%'} - ${value}px)`
+        : bind.arg
+    el.style.width = width
+  })
 }
