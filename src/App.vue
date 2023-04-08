@@ -1,48 +1,51 @@
 <template>
+<div
+  id="app"
+  class="flex flex-col light:bg-transparent light:transition-shadow"
+>
   <div
-    id="app"
-    class="test light:bg-transparent light:transition-shadow">
-    <div
-      id="nav"
-      class="light:text-sm deep:text-lg">
-      <router-link
-        v-for="(route, index) in routes"
-        :to="route.path"
-        :key="index">
-        {{ route.name }} |
-      </router-link>
-    </div>
-    <router-view />
+    id="nav"
+    class="flex-grow-0 h-28 light:text-sm deep:text-lg"
+  >
+    <router-link
+      v-for="(route, index) in routes"
+      :to="route.path"
+      :key="index"
+    >
+      {{ route.label }}
+    </router-link>
   </div>
+  <router-view />
+</div>
 </template>
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         routes: [
-          { path: '/', name: 'Home' },
-          { path: '/about', name: 'Split' },
-          { path: '/destroyed', name: 'Destroyed' },
-          { path: '/auto-scroll', name: 'AutoScroll' },
-          { path: '/style-change', name: 'StyleChange' },
-          { path: '/tailwind-select', name: 'TailwindSelect' },
-          { path: '/utilities-test', name: 'UtilitiesTest' },
-          { path: '/passResponse', name: 'passResponse' },
-          { path: '/pinia', name: 'pinia' },
-          { path: '/defineStore', name: 'defineStore' },
-          { path: '/umdImport', name: 'umdImport' },
-          { path: '/canvas', name: 'canvas' },
-          { path: '/idleCallback', name: 'idle' },
-          { path: '/idleCallback2', name: 'idle2' },
-          { path: '/fragment', name: 'fragment' },
-          { path: '/g2Polar', name: 'G2Polar' },
-          { path: '/tailwindWeight', name: 'TailwindWeight' },
-          { path: '/appendChild', name: 'appendChild' },
-          { path: '/recurseComp', name: 'recurseComp' },
-          { path: '/asyncWrapper', name: 'AsyncWrapper' },
-          { path: '/babel', name: 'Babel' },
-          { path: '/ifram', name: 'Iframe' },
+          { path: '/',label: 'Home' },
+          { path: '/about',label: 'Split' },
+          { path: '/destroyed',label: 'Destroyed' },
+          { path: '/auto-scroll',label: 'AutoScroll' },
+          { path: '/style-change',label: 'StyleChange' },
+          { path: '/tailwind-select',label: 'TailwindSelect' },
+          { path: '/utilities-test',label: 'UtilitiesTest' },
+          { path: '/passResponse',label: 'passResponse' },
+          { path: '/defineStore',label: 'defineStore' },
+          { path: '/umdImport',label: 'umdImport' },
+          { path: '/canvas',label: 'canvas' },
+          { path: '/idleCallback',label: 'idle' },
+          { path: '/idleCallback2',label: 'idle2' },
+          { path: '/fragment',label: 'fragment' },
+          { path: '/g2Polar',label: 'G2Polar' },
+          { path: '/tailwindWeight',label: 'TailwindWeight' },
+          { path: '/appendChild',label: 'appendChild' },
+          { path: '/recurseComp',label: 'recurseComp' },
+          { path: '/asyncWrapper',label: 'AsyncWrapper' },
+          { path: '/babel',label: 'Babel' },
+          { path: '/ifram',label: 'Iframe' },
+          { path: '/flex-full',label: 'FlexFull' },
         ],
       };
     },
@@ -50,25 +53,30 @@
 </script>
 
 <style lang="less" scoped>
-  @import 'assets/css/base.css';
+@import 'assets/css/base.css';
 
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-  }
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  height: 100%;
+}
 
-  #nav {
-    padding: 30px;
+#nav {
+  padding: 30px;
 
-    a {
-      font-weight: bold;
-      color: #2c3e50;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-      &.router-link-exact-active {
-        color: rgba(255, 0, 0, 0.5);
-      }
+    &.router-link-exact-active {
+      color: rgba(255, 0, 0, 0.5);
     }
   }
+}
+
+#nav a+a::before {
+  content: '|'
+}
 </style>

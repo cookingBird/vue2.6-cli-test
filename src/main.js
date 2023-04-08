@@ -1,27 +1,25 @@
-import Vue from 'vue';
-import router from './router';
-import store from './store';
+import Vue from 'vue'
+import router from './router'
+import store from './store'
 
-import App from './App.vue';
+import App from './App.vue'
+import directive from './directive'
 //css
-import './style/index.css';
+import './style/index.css'
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI, { size: 'mini' })
 
-import passResponse from './plugins/passResponse';
-Vue.use(passResponse);
-//pinia
-import { createPinia, PiniaVuePlugin } from 'pinia';
-Vue.use(PiniaVuePlugin);
-const pinia = createPinia();
+import passResponse from './plugins/passResponse'
+Vue.use(passResponse)
 
-Vue.config.productionTip = false;
+directive.install(Vue)
 
-Vue.use(ElementUI, { size: 'mini' });
+Vue.config.productionTip = false
+
 new Vue({
-	router,
-	pinia,
-	store,
-	render: (h) => h(App),
-}).$mount('#app');
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')

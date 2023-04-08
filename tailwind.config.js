@@ -4,10 +4,6 @@ module.exports = {
   mode: 'jit',
   purge: ['./public/index.html', './src/**/*.{vue,less,css,scss,js,jsx}'],
   darkMode: false, // or 'media' or 'class'
-  important: true,
-  theme: {
-    extend: {}
-  },
 
   plugins: [
     plugin(function ({ addVariant, e }) {
