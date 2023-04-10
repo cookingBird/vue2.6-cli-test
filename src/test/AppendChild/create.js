@@ -1,33 +1,36 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
 export default function (comp, props, contextId) {
-  let update = function (props) {
-    this.props = props;
-  };
+  let update = function (count) {
+    this.props = { msg: count }
+  }
   let vm = new Vue({
-    data() {
+    data () {
       return {
-        props: props,
-      };
+        props: props
+      }
     },
-    beforeDestroy() {
-      console.log('beforeDestory----------------created');
+    watch: {
+      props (val) {
+        console.log('watch props', val)
+      }
     },
-    mounted() {
-      update = update.bind(this);
+    beforeDestroy () {
+      console.log('beforeDestory----------------created')
     },
-    updated() {
-      console.log('updated--------------------------------,');
+    mounted () {
+      update = update.bind(this)
     },
-    render(h) {
-      return h(comp, { props: this.props });
+    updated () {
+      console.log('updated--------------------------------,')
     },
-  }).$mount();
-  const ctx = contextId ? document.getElementById(contextId) : document.body;
-  ctx.appendChild(vm.$el);
-  const createdComp = vm.$children[0];
-  console.log('create-------------', vm);
+    render (h) {
+      return h(comp, { props: this.props })
+    }
+  }).$mount(document.getElementById(contextId) || document.body)
+  // ctx.appendChild(vm.$el);
+  console.log('create-------------', vm)
   return {
-    update: update,
-  };
+    update: update
+  }
 }

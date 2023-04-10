@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { destroyHook } from '@/test/DestroyedHook/store';
+import { destroyHook } from '@/test/DestroyedHook/store.js';
 
 Vue.use(Vuex);
 

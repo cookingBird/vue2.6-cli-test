@@ -33,6 +33,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "test" */ '@/test/FragmentTest'),
   },
   {
+    path: '/DestroyedHook',
+    component: () => import(/* webpackChunkName: "test" */ '@/test/DestroyedHook/Destroyed.vue'),
+  },
+  {
     path: '/g2Polar',
     component: () => import(/* webpackChunkName: "test" */ '@/test/G2Polar'),
   },
@@ -63,6 +67,14 @@ const routes = [
   {
     path: '/flex-full',
     component: () => import(/* webpackChunkName: "test" */ '@/test/FlexHeight'),
+  },
+  {
+    path: '/flex-comp',
+    component: () => import(/* webpackChunkName: "test" */ '@/test/FlexComp'),
+  },
+  {
+    path: '/scroll-view',
+    component: () => import(/* webpackChunkName: "test" */ '@/test/ScrollView'),
   },
 ];
 

@@ -46,6 +46,9 @@
           { path: '/babel',label: 'Babel' },
           { path: '/ifram',label: 'Iframe' },
           { path: '/flex-full',label: 'FlexFull' },
+          { path: '/flex-comp',label: 'FlexComp' },
+          { path: '/scroll-view',label: 'ScrollView' },
+          { path: '/DestroyedHook',label: 'DestroyedHook' },
         ],
       };
     },

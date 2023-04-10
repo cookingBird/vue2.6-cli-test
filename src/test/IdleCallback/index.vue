@@ -66,6 +66,3 @@ export default {
 	},
 }
 </script>
-<style lang='css' scoped>
-.index {}
-</style>

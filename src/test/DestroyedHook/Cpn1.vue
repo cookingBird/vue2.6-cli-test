@@ -5,10 +5,10 @@
       <h2>This is props</h2>
       <span>{{ test }}</span>
       <p>this is inject</p>
-      <p>{{ parent.count }}</p>
+      <p>parent.count is {{ parent.count }}</p>
       <p>parentCount is {{ parentCount }}</p>
       <p>this is store count</p>
-      <p>store.state.storeCount is {{ $store.state.storeCount }}</p>
+      <p>$store.state.storeCount is {{ $store.state.storeCount }}</p>
       <p>this is computed storeCount {{ storeCount }}</p>
     </div>
   </div>
@@ -52,14 +52,12 @@ export default {
   //生命周期 - 创建之前
   beforeCreate() {
     console.log(`This is beforeCreated`)
-    console.log(this)
     console.log(this.msg)
     // console.log(this.test);
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
     console.log(`This is created`)
-    console.log(this)
     console.log(this.msg)
     console.log(this.test)
   },
@@ -74,24 +72,15 @@ export default {
   //生命周期 - 销毁之前
   beforeDestroy() {
     console.log(`This is beforeDestroy`)
-    console.log(this)
     console.log(this.msg)
     console.log(this.test)
   },
   //生命周期 - 销毁完成
   destroyed() {
     console.log(`This is destroyed`)
-    console.log(this)
     console.log(this.msg)
     console.log(this.test)
   },
-  //如果页面有keep-alive缓存功能，这个钩子会触发
-  activated() {},
-  /**非响应式的 property(不依赖响应性系统的实例 property)*/
-  methods: {},
-  /**渲染 (组件输出的声明式描述)*/
-  template: '',
-  render: (h) => h(),
 }
 </script>
 <style lang="css" scoped>
