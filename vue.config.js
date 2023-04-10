@@ -2,7 +2,7 @@
 const path = require('path');
 const isProd = process.env.NODE_ENV === 'production';
 const CDN = {
-  js: ['cdn/vue/vue.min.js', 'cdn/g2plot/g2plot.min.js', 'cdn/lodash/lodash.min.js'],
+  js: ['cdn/g2plot/g2plot.min.js', 'cdn/lodash/lodash.min.js'],
   css: ['cdn/css/style.css'],
 };
 module.exports = {
@@ -12,6 +12,7 @@ module.exports = {
       extensions: ['.js', '.vue', '.css', 'jsx'],
       alias: {
         '^': path.resolve(__dirname, './'),
+        '@': path.resolve(__dirname, 'src'),
       },
       // fallback: {
       //   g2plot: require.resolve(__dirname, './Deps/g2plot/g2plot.min.js'),

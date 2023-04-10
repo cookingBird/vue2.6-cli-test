@@ -1,8 +1,9 @@
 const fixTableBodyWrapper = (function () {
-  let timer
-  return function fixTableBodyWrapper (el) {
-    timer && cancelAnimationFrame(timer)
-    timer = requestAnimationFrame(() => {
+  let timer,
+    done = false
+  return function fixTableBodyWrapper (el, cb) {
+    timer && clearTimeout(timer)
+    timer = setTimeout(() => {
       const tableHeight = el.getBoundingClientRect().height
       const tableHeaderHeight = el
         .querySelector('.el-table__header-wrapper')
@@ -10,8 +11,16 @@ const fixTableBodyWrapper = (function () {
       const bodyHeight = Math.floor(tableHeight - tableHeaderHeight)
       el.querySelector('.el-table__body-wrapper').style.height =
         bodyHeight + 'px'
+      el.querySelector('.el-table__body-wrapper').style.overflowY = 'scroll'
+
+      cb &&
+        (() => {
+          !done && cb(bodyHeight)
+          done = true
+        })()
+
       timer = void 0
-    })
+    }, 300)
   }
 })()
 

@@ -1,13 +1,29 @@
 {
-  //该文件用于在，vue中配置了alias时，自动补全
   "compilerOptions": {
-    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "target": "es5",
+    "module": "esnext",
     "baseUrl": "./",
+    "moduleResolution": "node",
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["./*"],
-      "^/*": ["./*"]
-    }
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
   },
-  "exclude": ["node_modules", "dist", ".vscode", "public", ".git"]
+  "vueCompilerOptions": {
+    "experimentalCompatMode": 2,
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public",
+    "static"
+  ],
 }

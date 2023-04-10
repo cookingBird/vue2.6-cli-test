@@ -33,7 +33,6 @@ const calcRow = (function () {
     rowHeight = 59,
     debounceType = 'setTimeout'
   ) {
-    console.log('calcRow----------')
     return new Promise((resolve, reject) => {
       timer && getWindowTimer(debounceType).cancel(timer)
       const tableNode = entry.target

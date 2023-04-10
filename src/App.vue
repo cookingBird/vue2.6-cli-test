@@ -1,23 +1,22 @@
 <template>
+<div
+  id="app"
+  class="flex flex-col light:bg-transparent light:transition-shadow"
+>
   <div
-    id="app"
-    class="flex flex-col test light:bg-transparent light:transition-shadow"
+    id="nav"
+    class="flex-grow-0 h-28 light:text-sm deep:text-lg"
   >
-    <div
-      id="nav"
-      class="flex-grow-0 light:text-sm deep:text-lg"
+    <router-link
+      v-for="(route, index) in routes"
+      :to="route.path"
+      :key="index"
     >
-      <router-link
-        v-for="route,index in routes"
-        :to="route.path"
-        :key="index"
-      >
-        {{route.name}} |
-      </router-link>
-
-    </div>
-    <router-view />
+      {{ route.label }}
+    </router-link>
   </div>
+  <router-view />
+</div>
 </template>
 
 <script>
@@ -25,33 +24,32 @@
     data () {
       return {
         routes: [
-          { path: '/',name: 'Home' },
-          { path: '/about',name: 'Split' },
-          { path: '/destroyed',name: 'Destroyed' },
-          { path: '/auto-scroll',name: 'AutoScroll' },
-          { path: '/style-change',name: 'StyleChange' },
-          { path: '/tailwind-select',name: 'TailwindSelect' },
-          { path: '/utilities-test',name: 'UtilitiesTest' },
-          { path: '/passResponse',name: 'passResponse' },
-          { path: '/pinia',name: 'pinia' },
-          { path: '/defineStore',name: 'defineStore' },
-          { path: '/umdImport',name: 'umdImport' },
-          { path: '/canvas',name: 'canvas' },
-          { path: '/idleCallback',name: 'idle' },
-          { path: '/idleCallback2',name: 'idle2' },
-          { path: '/fragment',name: 'fragment' },
-          { path: '/g2Polar',name: 'G2Polar' },
-          { path: '/tailwindWeight',name: 'TailwindWeight' },
-          { path: '/appendChild',name: 'appendChild' },
-          { path: '/recurseComp',name: 'recurseComp' },
-          { path: '/asyncWrapper',name: 'AsyncWrapper' },
-          { path: '/babel',name: 'Babel' },
-          { path: '/virtual-list',name: 'VirtualList' },
-          { path: '/table-flex',name: 'TableFlex' },
-        ]
-      }
-    }
-  }
+          { path: '/',label: 'Home' },
+          { path: '/about',label: 'Split' },
+          { path: '/destroyed',label: 'Destroyed' },
+          { path: '/auto-scroll',label: 'AutoScroll' },
+          { path: '/style-change',label: 'StyleChange' },
+          { path: '/tailwind-select',label: 'TailwindSelect' },
+          { path: '/utilities-test',label: 'UtilitiesTest' },
+          { path: '/passResponse',label: 'passResponse' },
+          { path: '/defineStore',label: 'defineStore' },
+          { path: '/umdImport',label: 'umdImport' },
+          { path: '/canvas',label: 'canvas' },
+          { path: '/idleCallback',label: 'idle' },
+          { path: '/idleCallback2',label: 'idle2' },
+          { path: '/fragment',label: 'fragment' },
+          { path: '/g2Polar',label: 'G2Polar' },
+          { path: '/tailwindWeight',label: 'TailwindWeight' },
+          { path: '/appendChild',label: 'appendChild' },
+          { path: '/recurseComp',label: 'recurseComp' },
+          { path: '/asyncWrapper',label: 'AsyncWrapper' },
+          { path: '/babel',label: 'Babel' },
+          { path: '/ifram',label: 'Iframe' },
+          { path: '/flex-full',label: 'FlexFull' },
+        ],
+      };
+    },
+  };
 </script>
 
 <style lang="less">
@@ -80,5 +78,9 @@ body {
       color: rgba(255, 0, 0, 0.5);
     }
   }
+}
+
+#nav a+a::before {
+  content: '|'
 }
 </style>

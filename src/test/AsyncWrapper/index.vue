@@ -7,8 +7,8 @@
 <script>
 export default {
 	mounted () {
-		test1();
-		test2();
+		this.test1();
+		this.test2();
 	},
 	methods: {
 		async test1 () {
