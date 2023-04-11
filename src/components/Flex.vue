@@ -5,10 +5,14 @@
 	:grow="grow"
 >
 	<div class="flex-container__first">
-		<slot :name="firstName"></slot>
+		<section>
+			<slot :name="firstName"></slot>
+		</section>
 	</div>
 	<div class="flex-container__second">
-		<slot :name="secondName"></slot>
+		<section>
+			<slot :name="secondName"></slot>
+		</section>
 	</div>
 </div>
 </template>
@@ -51,6 +55,21 @@
 	}
 </script>
 <style lang='css'>
+	.flex-container__first,
+	.flex-container__second {
+		position: relative;
+	}
+
+	.flex-container__first> :first-child {
+		position: absolute;
+		inset: 0;
+	}
+
+	.flex-container__second> :first-child {
+		position: absolute;
+		inset: 0;
+	}
+
 	.flex-container[type^='col'] {
 		display: flex;
 		flex-direction: column;
