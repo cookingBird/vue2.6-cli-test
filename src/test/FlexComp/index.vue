@@ -8,7 +8,11 @@
 		:grow="item.grow"
 	>
 		<template v-slot:left>this is left</template>
-		<template v-slot:right>this is right</template>
+		<template v-slot:right>
+			<div container>
+				this is right
+			</div>
+		</template>
 		<template v-slot:top>this is top</template>
 		<template v-slot:bottom>this is bottom</template>
 	</Flex>
@@ -37,5 +41,3 @@
 		},
 	}
 </script>
-<style lang='css' scoped>
-</style>

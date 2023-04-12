@@ -5,14 +5,10 @@
 	:grow="grow"
 >
 	<div class="flex-container__first">
-		<section>
-			<slot :name="firstName"></slot>
-		</section>
+		<slot :name="firstName"></slot>
 	</div>
 	<div class="flex-container__second">
-		<section>
-			<slot :name="secondName"></slot>
-		</section>
+		<slot :name="secondName"></slot>
 	</div>
 </div>
 </template>
@@ -60,16 +56,6 @@
 		position: relative;
 	}
 
-	.flex-container__first> :first-child {
-		position: absolute;
-		inset: 0;
-	}
-
-	.flex-container__second> :first-child {
-		position: absolute;
-		inset: 0;
-	}
-
 	.flex-container[type^='col'] {
 		display: flex;
 		flex-direction: column;
@@ -78,7 +64,11 @@
 	.flex-container[type^='col'][grow='top']> :first-child {
 		flex-grow: 1;
 		flex-shrink: 1;
-		overflow: hidden;
+	}
+
+	.flex-container[type^='col'][grow='top']> :first-child>*[container] {
+		position: absolute;
+		inset: 0;
 	}
 
 	.flex-container[type^='col'][grow='top']> :last-child {
@@ -94,7 +84,11 @@
 	.flex-container[type^='col'][grow='bottom']> :last-child {
 		flex-grow: 1;
 		flex-shrink: 1;
-		overflow: hidden;
+	}
+
+	.flex-container[type^='col'][grow='bottom']> :last-child>*[container] {
+		position: absolute;
+		inset: 0;
 	}
 
 	.flex-container[type='row'] {
@@ -105,7 +99,11 @@
 	.flex-container[type^='row'][grow='left']> :first-child {
 		flex-grow: 1;
 		flex-shrink: 1;
-		overflow: hidden;
+	}
+
+	.flex-container[type^='row'][grow='left']> :first-child>*[container] {
+		position: absolute;
+		inset: 0;
 	}
 
 	.flex-container[type^='row'][grow='left']> :last-child {
@@ -121,6 +119,10 @@
 	.flex-container[type^='row'][grow='right']> :last-child {
 		flex-grow: 1;
 		flex-shrink: 1;
-		overflow: hidden;
+	}
+
+	.flex-container[type^='row'][grow='right']> :last-child>*[container] {
+		position: absolute;
+		inset: 0;
 	}
 </style>

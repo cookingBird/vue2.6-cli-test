@@ -76,6 +76,10 @@ const routes = [
     path: '/scroll-view',
     component: () => import(/* webpackChunkName: "test" */ '@/test/ScrollView'),
   },
+  {
+    path: '/multi-table',
+    component: () => import(/* webpackChunkName: "test" */ '@/views/MultiTable.vue'),
+  },
 ];
 
 const router = new VueRouter({

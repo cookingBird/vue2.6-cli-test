@@ -49,6 +49,7 @@
           { path: '/flex-comp',label: 'FlexComp' },
           { path: '/scroll-view',label: 'ScrollView' },
           { path: '/DestroyedHook',label: 'DestroyedHook' },
+          { path: '/multi-table',label: 'Table' },
         ],
       };
     },
