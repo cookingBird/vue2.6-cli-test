@@ -16,6 +16,12 @@
 		<template v-slot:top>this is top</template>
 		<template v-slot:bottom>this is bottom</template>
 	</Flex>
+	<div class="w-full">
+		<div class="w-full h-5 mr-10 bg-gray-700">margin : w-full</div>
+	</div>
+	<div class="w-full">
+		<div class="w-auto h-5 mr-10 bg-red-500">margin : w-auto</div>
+	</div>
 </div>
 </template>
 
