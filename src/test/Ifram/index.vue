@@ -1,47 +1,40 @@
 <template>
-  <div>
-    <div><el-button @click="postmessage">发送数据</el-button></div>
-    <iframe
-      title="test"
-      id="myiframe"
-      src="http://192.168.0.101:8081/"></iframe>
-    <!-- <iframe
-      title="test"
-      id="myiframe2"
-      src="http://192.168.0.101:8081/"></iframe> -->
-  </div>
+<div>
+  <div><el-button @click="preFetchIframe">预加载数据</el-button></div>
+  <div><el-button @click="run">运行</el-button></div>
+</div>
 </template>
 
 <script>
-  import { ConnectChannel } from './connector.js';
+  import { testCreate } from './utils'
   export default {
     name: 'index',
     components: {},
     inject: [],
     props: {},
-    data() {
+    data () {
       return {};
     },
     computed: {},
     watch: {},
-    created() {
+    created () {
       window.$name = 'parent';
-      console.log('parent', window);
+      console.log('parent',window);
+      this.runner = testCreate();
     },
-    mounted() {
-      this.connector = new ConnectChannel(
-        document.getElementById('myiframe').contentWindow,
-        '*'
-      );
+    mounted () {
     },
-    updated() {},
-    beforeDestroy() {},
+    updated () { },
+    beforeDestroy () { },
     methods: {
-      postmessage() {
-        this.connector.send(Math.random() * 1000).then((res) => {
-          console.log('send message success', res);
-        });
+      preFetchIframe () {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.baidu.com/';
+        // document.body.appendChild(iframe)
       },
+      run () {
+        this.runner()
+      }
     },
   };
 </script>
