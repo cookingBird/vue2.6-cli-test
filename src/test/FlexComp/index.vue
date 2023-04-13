@@ -9,12 +9,14 @@
 	>
 		<template v-slot:left>this is left</template>
 		<template v-slot:right>
-			<div container>
+			<div absolute>
 				this is right
 			</div>
 		</template>
 		<template v-slot:top>this is top</template>
-		<template v-slot:bottom>this is bottom</template>
+		<template v-slot:bottom>
+			<div full>this is bottom</div>
+		</template>
 	</Flex>
 	<div class="w-full">
 		<div class="w-full h-5 mr-10 bg-gray-700">margin : w-full</div>

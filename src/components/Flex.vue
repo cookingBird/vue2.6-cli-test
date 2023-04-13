@@ -3,6 +3,7 @@
 	class="flex-container"
 	:type="type"
 	:grow="grow"
+	ref="container"
 >
 	<div class="flex-container__first">
 		<slot :name="firstName"></slot>
@@ -48,6 +49,49 @@
 				return this.type === 'row' ? 'right' : 'bottom'
 			},
 		},
+		mounted () {
+			this.$nextTick(this.fullEl);
+		},
+		updated () {
+			this.$nextTick(this.fullEl);
+		},
+		methods: {
+			fullEl () {
+				const container = this.$refs['container'];
+				const firstEl = container.querySelector('.flex-container__first> [full]')
+				const secondEl = container.querySelector('.flex-container__second> [full]');
+				if (this.type.startsWith('col')) {
+					if (this.grow === 'top') {
+						this.fullHeight(firstEl)
+					} else {
+						this.fullHeight(secondEl)
+					}
+				} else {
+					if (this.grow === 'left') {
+						this.fullWidth(firstEl)
+					} else {
+						this.fullWidth(secondEl)
+					}
+				}
+			},
+			fullHeight ($el) {
+				if ($el) {
+					const style = getComputedStyle($el)
+					const mt = style.marginTop
+					const mb = style.marginBottom
+					$el.style.maxHeight = `calc(100% - ${mt} - ${mb})`
+				}
+			},
+			fullWidth ($el) {
+				if ($el) {
+					const style = getComputedStyle($el)
+					const ml = style.marginLeft
+					const mr = style.marginRight
+					$el.style.maxWidth = `calc(100% - ${ml} - ${mr})`
+				}
+			},
+
+		}
 	}
 </script>
 <style lang='css'>
@@ -66,9 +110,13 @@
 		flex-shrink: 1;
 	}
 
-	.flex-container[type^='col'][grow='top']> :first-child>*[container] {
+	.flex-container[type^='col'][grow='top']> :first-child>*[absolute] {
 		position: absolute;
 		inset: 0;
+	}
+
+	.flex-container[type^='col'][grow='top']> :first-child>*[full] {
+		height: 100%
 	}
 
 	.flex-container[type^='col'][grow='top']> :last-child {
@@ -86,9 +134,13 @@
 		flex-shrink: 1;
 	}
 
-	.flex-container[type^='col'][grow='bottom']> :last-child>*[container] {
+	.flex-container[type^='col'][grow='bottom']> :last-child>*[absolute] {
 		position: absolute;
 		inset: 0;
+	}
+
+	.flex-container[type^='col'][grow='bottom']> :last-child>*[full] {
+		height: 100%;
 	}
 
 	.flex-container[type='row'] {
@@ -101,9 +153,13 @@
 		flex-shrink: 1;
 	}
 
-	.flex-container[type^='row'][grow='left']> :first-child>*[container] {
+	.flex-container[type^='row'][grow='left']> :first-child>*[absolute] {
 		position: absolute;
 		inset: 0;
+	}
+
+	.flex-container[type^='row'][grow='left']> :first-child>*[full] {
+		width: 100%;
 	}
 
 	.flex-container[type^='row'][grow='left']> :last-child {
@@ -121,8 +177,12 @@
 		flex-shrink: 1;
 	}
 
-	.flex-container[type^='row'][grow='right']> :last-child>*[container] {
+	.flex-container[type^='row'][grow='right']> :last-child>*[absolute] {
 		position: absolute;
 		inset: 0;
+	}
+
+	.flex-container[type^='row'][grow='right']> :last-child>*[full] {
+		width: 100%;
 	}
 </style>
