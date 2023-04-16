@@ -58,43 +58,51 @@
 		methods: {
 			fullEl () {
 				const container = this.$refs['container'];
-				const firstEl = container.querySelector('.flex-container__first> [full]')
-				const secondEl = container.querySelector('.flex-container__second> [full]');
+				const firstEl = container.querySelector('.flex-container__first')
+				const secondEl = container.querySelector('.flex-container__second');
+
 				if (this.type.startsWith('col')) {
 					if (this.grow === 'top') {
-						this.fullHeight(firstEl)
+						this.fullHeight(firstEl,secondEl)
 					} else {
-						this.fullHeight(secondEl)
+						this.fullHeight(secondEl,firstEl)
 					}
 				} else {
 					if (this.grow === 'left') {
-						this.fullWidth(firstEl)
+						this.fullWidth(firstEl,secondEl)
 					} else {
-						this.fullWidth(secondEl)
+						this.fullWidth(secondEl,firstEl)
 					}
 				}
 			},
-			fullHeight ($el) {
-				if ($el) {
-					const style = getComputedStyle($el)
-					const mt = style.marginTop
-					const mb = style.marginBottom
-					$el.style.maxHeight = `calc(100% - ${mt} - ${mb})`
-				}
+			fullHeight ($el,$rest) {
+				// if ($el && $rest) {
+				const style = getComputedStyle($el)
+				const styleRest = getComputedStyle($rest);
+				const mt = style.marginTop;
+				const mb = style.marginBottom;
+				$el.style.maxHeight = `calc(100% - ${styleRest.height} - ${mt} - ${mb})`;
+				// }
 			},
-			fullWidth ($el) {
-				if ($el) {
-					const style = getComputedStyle($el)
-					const ml = style.marginLeft
-					const mr = style.marginRight
-					$el.style.maxWidth = `calc(100% - ${ml} - ${mr})`
-				}
+			fullWidth ($el,$rest) {
+				// if ($el && $rest) {
+				const style = getComputedStyle($el);
+				const styleRest = getComputedStyle($rest);
+				const ml = style.marginLeft;
+				const mr = style.marginRight;
+				$el.style.maxWidth = `calc(100% - ${styleRest.width} - ${ml} - ${mr})`
+				// }
 			},
 
 		}
 	}
 </script>
 <style lang='css'>
+	.flex-container {
+		height: 100%;
+		width: 100%;
+	}
+
 	.flex-container__first,
 	.flex-container__second {
 		position: relative;
