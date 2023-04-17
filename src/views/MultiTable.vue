@@ -129,6 +129,7 @@
 </template>
 
 <script>
+
 	export default {
 		data () {
 			return {
@@ -955,7 +956,7 @@
 					}
 				}
 				return mergeRow(scope,this.data,'taskId','taskName')
-			}
+			},
 		}
 	};
 </script>

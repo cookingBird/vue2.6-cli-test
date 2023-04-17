@@ -1,10 +1,15 @@
 // vue.config.js
-const path = require('path');
-const isProd = process.env.NODE_ENV === 'production';
+const path = require('path')
+const isProd = process.env.NODE_ENV === 'production'
 const CDN = {
-  js: ['cdn/g2plot/g2plot.min.js', 'cdn/lodash/lodash.min.js'],
-  css: ['cdn/css/style.css'],
-};
+  js: [
+    'cdn/g2plot/g2plot.min.js',
+    'cdn/lodash/lodash.min.js',
+    'cdn/vue/vue.min.js',
+    'cdn/ElementUI.js'
+  ],
+  css: ['cdn/css/style.css']
+}
 module.exports = {
   lintOnSave: false,
   configureWebpack: {
@@ -12,37 +17,23 @@ module.exports = {
       extensions: ['.js', '.vue', '.css', 'jsx'],
       alias: {
         '^': path.resolve(__dirname, './'),
-        '@': path.resolve(__dirname, 'src'),
-      },
+        '@': path.resolve(__dirname, 'src')
+      }
       // fallback: {
       //   g2plot: require.resolve(__dirname, './Deps/g2plot/g2plot.min.js'),
       // },
     },
     externals: isProd
-      ? [
-          function (context, request, callback) {
-            if (/\.min\.js$/.test(request)) {
-              return callback(null, 'commonjs' + request);
-            }
-            callback();
-          },
-          // function (context, request, callback) {
-          //   if (/^vue$/.test(request)) {
-          //     return callback(null);
-          //   }
-          //   callback();
-          // },
-          // /^vue/i, //remove vue vuex vue-router
-          // {
-          //   vue: 'Vue', //only remove vue
-          // },
-        ]
-      : [],
+      ? {
+          vue: 'Vue',
+          'element-ui': 'ElementUI'
+        }
+      : {}
   },
   chainWebpack: function (config) {
-    config.plugin('html').tap((args) => {
-      args[0].CDN = CDN;
-      return args;
-    });
-  },
-};
+    config.plugin('html').tap(args => {
+      args[0].CDN = CDN
+      return args
+    })
+  }
+}

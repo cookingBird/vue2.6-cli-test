@@ -7,8 +7,13 @@ import directive from './directive'
 //css
 import './style/index.css'
 
-import ElementUI from 'element-ui'
+import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
+console.log(
+  'ElementUI-----------',
+  window,
+  window.ElementUI,
+)
 Vue.use(ElementUI, { size: 'mini' })
 
 import passResponse from './plugins/passResponse'
