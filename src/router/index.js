@@ -80,6 +80,10 @@ const routes = [
     path: '/multi-table',
     component: () => import(/* webpackChunkName: "test" */ '@/views/MultiTable.vue'),
   },
+  {
+    path: '/grid-var',
+    component: () => import(/* webpackChunkName: "test" */ '@/views/GridVar.vue'),
+  },
 ];
 
 const router = new VueRouter({
