@@ -34,7 +34,6 @@
 		},
 		watch: {
 			model: {
-				deep: true,
 				handler(val) {
 					console.log('EInput watch model', val, this.valueKey);
 					console.log('getCtxValue', this.getCtxValue(this.model, this.valueKey));
