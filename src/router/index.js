@@ -84,6 +84,10 @@ const routes = [
     path: '/grid-var',
     component: () => import(/* webpackChunkName: "test" */ '@/views/GridVar.vue'),
   },
+  {
+    path: '/input-test',
+    component: () => import(/* webpackChunkName: "test" */ '@/views/InputTest.vue'),
+  },
 ];
 
 const router = new VueRouter({

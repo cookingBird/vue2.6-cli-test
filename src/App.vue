@@ -51,6 +51,7 @@
           { path: '/DestroyedHook',label: 'DestroyedHook' },
           { path: '/multi-table',label: 'Table' },
           { path: '/grid-var',label: 'Grid' },
+          { path: '/input-test',label: 'Input' },
         ],
       };
     },
