@@ -1,6 +1,6 @@
 <template>
 <el-input
-	:value="val"
+	:value="getCtxValue(model, valueKey)"
 	@input="valueSetter"
 	v-on="$listeners"
 >
