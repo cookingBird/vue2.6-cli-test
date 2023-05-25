@@ -1,18 +1,38 @@
 <template>
 <div>
 	<div class="flex px-8 space-x-4">
-		<span class="min-w-max">EInput 测试</span>
+		<span class="min-w-max">EInput OBJ 测试</span>
 		<EInput
-			:model="model"
+			:model.sync="model"
 			value-key="foo.bar.test"
 		></EInput>
+	</div>
+	<div class="flex px-8 space-x-4">
+		<span class="min-w-max">EInput NORMAL 测试</span>
+		<EInput :model.sync="model2.fee"></EInput>
+	</div>
+	<div class="flex px-8 space-x-4">
+		<span class="min-w-max">ElInput Pro 测试</span>
+		<ElInputPro
+			:model.sync="model2"
+			value-key="foo.bar.test"
+			@input="alertInput"
+		>
+			<template v-slot:default>
+				'suffix'
+			</template>
+		</ElInputPro>
 	</div>
 	<div class="flex px-8 space-x-4">
 		<span class="min-w-max">el-input 测试</span>
 		<el-input
 			:value="getCtxValue(model, 'foo.bar.test')"
 			@input="valueSetter"
-		></el-input>
+		>
+			<template v-slot:suffix>
+				'suffix'
+			</template>
+		</el-input>
 	</div>
 	<el-button @click="onClick">$set测试</el-button>
 </div>
@@ -21,13 +41,19 @@
 <script>
 	import { getCtxValue, getCtxValueSetter } from '@/utils/misc'
 	import EInput from '@/components/EInput.vue';
+	import { createInputPro } from '@/components/element-ui-pro';
+	import { Input } from 'element-ui';
 
 	export default {
 		name: "InputTest",
-		components: { EInput },
+		components: {
+			ElInputPro: createInputPro(Input),
+			EInput
+		},
 		data() {
 			return {
-				model: {}
+				model: {},
+				model2: {}
 			};
 		},
 		computed: {
@@ -42,7 +68,7 @@
 			model: {
 				deep: true,
 				handler(val) {
-					// console.log('watch model', val);F
+					console.log('watch model', val);
 				}
 			},
 			value: {
@@ -65,6 +91,9 @@
 				const { model } = this;
 				this.$set(model, 'baz.test', 'test value');
 				console.log('click test', this.model);
+			},
+			alertInput(val) {
+				alert(val)
 			}
 		},
 	}

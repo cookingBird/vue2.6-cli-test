@@ -88,6 +88,14 @@ const routes = [
     path: '/input-test',
     component: () => import(/* webpackChunkName: "test" */ '@/views/InputTest.vue'),
   },
+  {
+    path: '/form-validate',
+    component: () => import(/* webpackChunkName: "test" */ '@/views/FormValidate.vue'),
+  },
+  {
+    path: '/Intersection',
+    component: () => import(/* webpackChunkName: "test" */ '@/views/Intersection.vue'),
+  },
 ];
 
 const router = new VueRouter({

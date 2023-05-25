@@ -19,8 +19,12 @@ directive.install(Vue)
 
 Vue.config.productionTip = false
 
-new Vue({
+const vm = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+
+console.log('vm', vm);
+console.log('Vue', Vue);

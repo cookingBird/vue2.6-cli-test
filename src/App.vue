@@ -52,6 +52,8 @@
           { path: '/multi-table',label: 'Table' },
           { path: '/grid-var',label: 'Grid' },
           { path: '/input-test',label: 'Input' },
+          { path: '/form-validate',label: 'FormValidate' },
+          { path: '/Intersection',label: 'Intersection' },
         ],
       };
     },

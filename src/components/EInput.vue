@@ -1,7 +1,7 @@
 <template>
 <el-input
 	:value="getCtxValue(model, valueKey)"
-	@input="valueSetter"
+	@input="handleInput"
 	v-on="$listeners"
 >
 </el-input>
@@ -10,17 +10,12 @@
 <script>
 	import { getCtxValue, getCtxValueSetter } from '@/utils/misc'
 
+
 	export default {
 		name: "EInput",
 		props: {
-			'model': {
-				type: Object,
-				required: true
-			},
-			'valueKey': {
-				type: String,
-				required: true
-			}
+			model: Object,
+			valueKey: String
 		},
 		data() {
 			return {
@@ -35,8 +30,8 @@
 		watch: {
 			model: {
 				handler(val) {
-					console.log('EInput watch model', val, this.valueKey);
-					console.log('getCtxValue', this.getCtxValue(this.model, this.valueKey));
+					// console.log('EInput watch model', val, this.valueKey);
+					// console.log('getCtxValue', this.getCtxValue(this.model, this.valueKey));
 					this.val = this.getCtxValue(this.model, this.valueKey);
 				}
 			},
@@ -49,7 +44,11 @@
 			getCtxValue,
 			getCtxValueSetter,
 			handleInput(val) {
-				this.valueSetter(val)
+				if (!this.valueKey) {
+					this.$emit('update:model', val);
+				} else {
+					this.valueSetter(val);
+				}
 				console.log('EInput---------------', val, this.model);
 			}
 		},

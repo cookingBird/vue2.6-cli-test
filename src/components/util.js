@@ -1,4 +1,13 @@
-/**@description 设置一个ctx中的某些字段值，支持.访问符 */
+export function bindSlotContext(target = {}, context) {
+	return Object.values(target)
+		.flat()
+		.map(vnode => {
+			vnode.context = context;
+			return vnode;
+		});
+}
+
+/**@description 以.访问符设置一个ctx中的某些字段值 */
 export function getCtxValueSetter(ctx, filedLike) {
 	if (filedLike) {
 		const fileds = filedLike.split('.');
@@ -18,7 +27,7 @@ export function getCtxValueSetter(ctx, filedLike) {
 	}
 }
 
-/**@description 获取一个ctx中的某一字段值，支持.访问符 */
+/**@description 以.访问符获取一个ctx中的某一字段值 */
 export function getCtxValue(ctx, filedLike) {
 	if (filedLike) {
 		const fileds = filedLike.split('.');
