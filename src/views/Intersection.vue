@@ -33,30 +33,30 @@
 </template>
 
 <script>
-
+	import debounce from 'lodash/debounce';
 
 	export default {
 		name: "Intersection",
-		components: {},
-		inject: [],
-		props: {},
 		data() {
 			return {};
 		},
+		created() {
+			this.handleInit = debounce(this.handleInit, 300);
+		},
 		mounted() {
-			this.initObserve(undefined, undefined, (el, entry) => {
-				console.log('init fetching data', el, entry);
-			});
+			this.initObserve(undefined, undefined, this.handleInit);
 		},
 		methods: {
 			handleSelect(e) {
-				console.log('e', e.target.innerText);
-				document.getElementById(e.target.innerText).scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+				document.getElementById(e.target.innerText)
+					.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
 			},
-			initObserve(viewPortId = 'scrollArea',
+			initObserve(
+				viewPortId = 'scrollArea',
 				targets = document.querySelectorAll('#scrollArea .list-item'),
-				onViewCallback,
+				onViewCallback = () => { },
 				observeCb = (el) => el,
+				once = false
 			) {
 				const observeRecord = new WeakMap();
 				const intersectionObserver = new IntersectionObserver(
@@ -75,15 +75,18 @@
 					intersectionObserver.observe(observeCb(el));
 					const onView = (entry) => {
 						onViewCallback?.(el, entry)
-						intersectionObserver.unobserve(el);
-						observeRecord.delete(el);
+						if (once) {
+							intersectionObserver.unobserve(el);
+							observeRecord.delete(el);
+						}
 					};
-					observeRecord.set(el, onView)
+					observeRecord.set(el, onView);
 				};
 				this.$on('hook:beforeDestroy', intersectionObserver.disconnect);
+			},
+			handleInit(el, entry) {
+				console.log('init fetching data', el, entry);
 			}
 		},
 	}
 </script>
-<style lang='css' scoped>
-</style>
