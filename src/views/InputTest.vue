@@ -18,7 +18,7 @@
 			value-key="foo.bar.test"
 			@input="alertInput"
 		>
-			<template v-slot:default>
+			<template v-slot:suffix="">
 				'suffix'
 			</template>
 		</ElInputPro>
@@ -29,7 +29,7 @@
 			:value="getCtxValue(model, 'foo.bar.test')"
 			@input="valueSetter"
 		>
-			<template v-slot:suffix>
+			<template v-slot:suffix="">
 				'suffix'
 			</template>
 		</el-input>
@@ -43,11 +43,13 @@
 	import EInput from '@/components/EInput.vue';
 	import { createInputPro } from '@/components/element-ui-pro';
 	import { Input } from 'element-ui';
+	import ElInputPro from "@/components/ElInputPro.vue"
 
 	export default {
 		name: "InputTest",
 		components: {
-			ElInputPro: createInputPro(Input),
+			// ElInputPro: createInputPro(Input),
+			ElInputPro: ElInputPro,
 			EInput
 		},
 		data() {
@@ -79,6 +81,12 @@
 			}
 
 		},
+		created() {
+			// console.log('InputTest created', this);
+		},
+		mounted() {
+			// console.log('InputTest mounted', this);
+		},
 		methods: {
 			getCtxValue,
 			getCtxValueSetter,
@@ -93,7 +101,7 @@
 				console.log('click test', this.model);
 			},
 			alertInput(val) {
-				alert(val)
+				// alert(val)
 			}
 		},
 	}

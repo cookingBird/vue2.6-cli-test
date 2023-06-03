@@ -3,6 +3,7 @@ import * as Util from './util'
 export function createInputPro(elInput) {
 	return {
 		name: 'ElInputPro',
+		components: { elInput },
 		methods: {
 			getCtxValue: Util.getCtxValue,
 			getCtxValueSetter: Util.getCtxValueSetter,
@@ -15,7 +16,6 @@ export function createInputPro(elInput) {
 			}
 		},
 		props: {
-			...elInput.props,
 			model: Object,
 			valueKey: String
 		},
@@ -24,13 +24,10 @@ export function createInputPro(elInput) {
 				return this.getCtxValueSetter(this.model, this.valueKey)
 			},
 		},
+		mounted() {
+			console.log('mounted--------', this);
+		},
 		render(h) {
-			const slots = Util.bindSlotContext(this.$slots, this._self);
-			// const slots = Object.values(this.$slots);
-			console.log('this', this);
-			console.log('this.slots', this.$slots);
-			console.log('this.slots', slots);
-			console.log('this.scopedSlots', this.$scopedSlots);
 			return h(
 				elInput,
 				{
@@ -40,12 +37,11 @@ export function createInputPro(elInput) {
 					},
 					attrs: this.$attrs,
 					props: {
-						...this.$props,
+						...this.$attrs,
 						value: this.getCtxValue(this.model, this.valueKey)
 					},
-					scopedSlots: this.$scopedSlots,
+					scopedSlots: this.$slots
 				},
-				slots
 			);
 		}
 	}

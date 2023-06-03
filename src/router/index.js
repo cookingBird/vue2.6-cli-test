@@ -3,7 +3,11 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-const routes = [
+export const routes = [
+  {
+    path: '/split',
+    component: () => import(/* webpackChunkName: "test" */ '@/test/AutoSplitLayout/About.vue'),
+  },
   {
     path: '/defineStore',
     component: () => import(/* webpackChunkName: "test" */ '@/test/defineStore'),
@@ -95,6 +99,10 @@ const routes = [
   {
     path: '/Intersection',
     component: () => import(/* webpackChunkName: "test" */ '@/views/Intersection.vue'),
+  },
+  {
+    path: '/el-input-pro',
+    component: () => import(/* webpackChunkName: "test" */ '@/views/ElInputPro.vue'),
   },
 ];
 

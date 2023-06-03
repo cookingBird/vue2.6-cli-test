@@ -9,8 +9,12 @@ import './style/index.css'
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
+import ElementUIPro from '@/components/element-ui-pro/index'
 
 Vue.use(ElementUI, { size: 'mini' })
+
+
+Vue.use(ElementUIPro)
 
 import passResponse from './plugins/passResponse'
 Vue.use(passResponse)
@@ -19,12 +23,8 @@ directive.install(Vue)
 
 Vue.config.productionTip = false
 
-const vm = new Vue({
+new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
-
-
-console.log('vm', vm);
-console.log('Vue', Vue);
+}).$mount('#app');

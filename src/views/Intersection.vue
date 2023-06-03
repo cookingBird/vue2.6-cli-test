@@ -80,7 +80,7 @@
 					};
 					observeRecord.set(el, onView)
 				};
-				this.$on('hook:beforeDestroy', intersectionObserver.disconnect);
+				this.$on('hook:beforeDestroy', () => intersectionObserver.disconnect());
 			}
 		},
 	}

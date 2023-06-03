@@ -59,10 +59,6 @@ a {
   margin-left: 0.1rem;
 }
 
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
+.flex-basis-0{
+  flex-basis: 0;
 }
